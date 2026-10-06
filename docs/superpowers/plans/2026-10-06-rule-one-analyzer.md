@@ -2549,7 +2549,7 @@ test("escapeHtml", () => {
 
 - [ ] **Step 2: Run tests to verify they fail**
 
-Run: `node --test tests/js/`
+Run: `node --test "tests/js/*.test.mjs"`
 Expected: FAIL — `Cannot find module .../site/js/format.js`
 
 - [ ] **Step 3: Implement** — `site/js/format.js`
@@ -2654,7 +2654,7 @@ export function stockMarkdown(stock, columns) {
 
 - [ ] **Step 4: Run JS tests to verify they pass**
 
-Run: `node --test tests/js/`
+Run: `node --test "tests/js/*.test.mjs"`
 Expected: 5 passing tests
 
 - [ ] **Step 5: Implement glossary** — `site/js/glossary.js`
@@ -3772,7 +3772,7 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest -q
-          node --test tests/js/
+          node --test "tests/js/*.test.mjs"
       - name: Analyze and send alerts
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
@@ -3868,7 +3868,7 @@ repo settings.
 
 ```bash
 python -m pip install -r requirements.txt
-python -m pytest -q && node --test tests/js/
+python -m pytest -q && node --test "tests/js/*.test.mjs"
 SEC_USER_AGENT="Your Name you@example.com" python -m engine.main --no-email
 cp -r data site/data && python -m http.server 8000 -d site    # open http://localhost:8000
 ```
@@ -3887,7 +3887,7 @@ Run:
 ```bash
 python -c "import yaml" 2>/dev/null || python -m pip install -q pyyaml
 python -c "import yaml;d=yaml.safe_load(open('.github/workflows/analyze.yml'));print(sorted(d['jobs']))"
-python -m pytest -q && node --test tests/js/
+python -m pytest -q && node --test "tests/js/*.test.mjs"
 ```
 Expected: `['analyze', 'deploy']`; all tests pass.
 

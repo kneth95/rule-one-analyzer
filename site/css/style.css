@@ -1,0 +1,93 @@
+:root {
+  --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --border: #e2e2e0;
+  --accent: #2f6fdb; --accent-text: #ffffff;
+  --buy: #1f8a4c; --buy-bg: #e3f4ea; --close: #9a6b00; --close-bg: #fdf3d8; --not: #5f6368; --not-bg: #eeeeee;
+  --bad: #c0392b; --warn-bg: #fff6e0; --tip-bg: #1d1d1f; --tip-text: #f5f5f5;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131315; --surface: #1c1c1f; --text: #ececee; --muted: #9a9aa2; --border: #2e2e33;
+    --accent: #6b9cff; --accent-text: #0b0b0c;
+    --buy: #5fd394; --buy-bg: #163524; --close: #f2c14e; --close-bg: #3a2f12; --not: #b0b3b8; --not-bg: #2a2a2e;
+    --bad: #ff7b6b; --warn-bg: #352b14; --tip-bg: #f5f5f5; --tip-text: #1d1d1f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131315; --surface: #1c1c1f; --text: #ececee; --muted: #9a9aa2; --border: #2e2e33;
+  --accent: #6b9cff; --accent-text: #0b0b0c;
+  --buy: #5fd394; --buy-bg: #163524; --close: #f2c14e; --close-bg: #3a2f12; --not: #b0b3b8; --not-bg: #2a2a2e;
+  --bad: #ff7b6b; --warn-bg: #352b14; --tip-bg: #f5f5f5; --tip-text: #1d1d1f;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent); }
+header.top { display: flex; align-items: center; gap: 16px; padding: 12px 16px; background: var(--surface); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+header.top .brand { font-weight: 700; text-decoration: none; color: var(--text); }
+header.top nav { display: flex; gap: 14px; flex: 1; }
+header.top nav a { text-decoration: none; color: var(--muted); }
+header.top nav a.active { color: var(--text); font-weight: 600; }
+main { max-width: 1100px; margin: 0 auto; padding: 20px 16px 60px; }
+h1 { font-size: 1.6rem; margin: 0 0 4px; }
+h2 { font-size: 1.15rem; margin: 0 0 12px; }
+.muted { color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 16px 0; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.stat .label { color: var(--muted); font-size: 0.85rem; }
+.stat .value { font-size: 1.35rem; font-weight: 650; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+button, .button { font: inherit; padding: 7px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; text-decoration: none; display: inline-block; }
+button.primary, .button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+button.danger { color: var(--bad); }
+button:disabled { opacity: 0.5; cursor: wait; }
+input, select, textarea { font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+textarea { width: 100%; min-height: 80px; }
+label { display: grid; gap: 4px; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+th:first-child, td:first-child, th.left, td.left { text-align: left; }
+th { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+th.sortable { cursor: pointer; }
+tr.clickable { cursor: pointer; }
+tr.clickable:hover { background: var(--bg); }
+.pass { color: var(--buy); font-weight: 600; }
+.fail { color: var(--bad); font-weight: 600; }
+
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+.badge.buy { background: var(--buy-bg); color: var(--buy); }
+.badge.close { background: var(--close-bg); color: var(--close); }
+.badge.not-yet { background: var(--not-bg); color: var(--not); }
+.banner { padding: 10px 14px; border-radius: 10px; background: var(--warn-bg); margin: 12px 0; }
+.banner.error { color: var(--bad); }
+ul.warnings { margin: 0; padding-left: 20px; }
+
+.term { white-space: nowrap; }
+.info { border: none; background: none; padding: 0 2px; margin-left: 2px; color: var(--muted); cursor: help; font-size: 0.85em; vertical-align: super; line-height: 1; }
+.tip { position: absolute; z-index: 50; background: var(--tip-bg); color: var(--tip-text); padding: 10px 12px; border-radius: 10px; font-size: 0.85rem; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+.tip p { margin: 6px 0 0; white-space: normal; }
+
+.owner-only { display: none !important; }
+body.owner .owner-only { display: revert !important; }
+body.owner .owner-only.row { display: flex !important; }
+dialog.owner-dialog { max-width: 520px; width: calc(100% - 32px); border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--text); }
+dialog.owner-dialog input { width: 100%; }
+.toasts { position: fixed; bottom: 16px; left: 16px; right: 16px; display: grid; gap: 8px; justify-items: center; z-index: 60; pointer-events: none; }
+.toast { max-width: 560px; background: var(--tip-bg); color: var(--tip-text); padding: 10px 14px; border-radius: 10px; pointer-events: auto; }
+.toast a { color: inherit; }
+.toast.error { background: var(--bad); color: #fff; }
+
+.steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+.steps li::before { content: counter(step); font-weight: 700; color: var(--muted); }
+.steps .value { font-weight: 650; font-variant-numeric: tabular-nums; text-align: right; }
+.charts { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.charts .chart { background: var(--bg); border-radius: 10px; padding: 8px; height: 200px; }
+.prose { max-width: 720px; }
+.prose h2 { margin-top: 28px; }
+@media (max-width: 600px) {
+  body { font-size: 14px; }
+  .steps li { grid-template-columns: 24px 1fr; }
+  .steps .value { grid-column: 2; text-align: left; }
+}
