@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rule #1 Guide</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">Rule #1 Analyzer</a>
+  <nav>
+    <a href="index.html">Watchlist</a>
+    <a href="guide.html" class="active">Guide</a>
+    <a href="settings.html">Settings</a>
+  </nav>
+  <button id="owner-btn" type="button" title="Owner access">🔑 Owner</button>
+</header>
+<main class="prose">
+  <h1>How Rule #1 works, and how to read this dashboard</h1>
+  <p>Tap or hover any <b>ⓘ</b> for a plain-English explanation of a term.</p>
+
+  <h2>1. The idea</h2>
+  <p><span class="term" data-term="rule1">Rule #1</span> means buying wonderful businesses at a big discount to what they're worth, so you're unlikely to lose money. A business is "wonderful" when it passes <span class="term" data-term="four_ms">the 4 Ms</span>.</p>
+
+  <h2>2. What you decide, and what the tool checks</h2>
+  <p>You decide <span class="term" data-term="meaning">Meaning</span>, <span class="term" data-term="moat">Moat</span> and <span class="term" data-term="management">Management</span> when you put a company on your watchlist. Write your reasoning in the notes on each stock page.</p>
+  <p>The tool checks the numbers: the <span class="term" data-term="big_five">Big Five</span>, the <span class="term" data-term="debt">debt</span>, and the price compared with the <span class="term" data-term="mos_price">MOS price</span>.</p>
+
+  <h2>3. The Big Five</h2>
+  <p>Five numbers should each be at least 10% over the last <span class="term" data-term="windows">10, 5, 3 and 1 years</span>:</p>
+  <ul>
+    <li><span class="term" data-term="roic">ROIC</span>: profit earned on the money invested in the business.</li>
+    <li><span class="term" data-term="sales_growth">Sales growth</span>: revenue growth per year.</li>
+    <li><span class="term" data-term="eps_growth">EPS growth</span>: profit-per-share growth per year.</li>
+    <li><span class="term" data-term="equity_growth">Equity growth</span>: growth of what shareholders own, per share.</li>
+    <li><span class="term" data-term="fcf_growth">Free cash flow growth</span>: growth of the spare cash the business produces.</li>
+  </ul>
+  <p>Growth numbers use <span class="term" data-term="cagr">CAGR</span>. The <span class="term" data-term="big_five_score">Big Five score</span> counts how many pass.</p>
+
+  <h2>4. What the business is worth</h2>
+  <ol>
+    <li>Pick a <span class="term" data-term="growth_rate">growth rate</span>: the lower of past equity growth and the <span class="term" data-term="analyst_growth">analysts' estimate</span>.</li>
+    <li>Grow today's <span class="term" data-term="eps">EPS</span> for 10 years to get <span class="term" data-term="future_eps">Future EPS</span>.</li>
+    <li>Multiply by a conservative <span class="term" data-term="future_pe">Future P/E</span> to get the <span class="term" data-term="future_price">Future price</span>.</li>
+    <li>Discount it back 10 years at the 15% <span class="term" data-term="marr">MARR</span>. That's the <span class="term" data-term="sticker_price">Sticker Price</span>.</li>
+    <li>Halve it for a <span class="term" data-term="mos">Margin of Safety</span>. That's the <span class="term" data-term="mos_price">MOS price</span>: the buy price.</li>
+  </ol>
+  <p>Two simpler checks confirm the result: the <span class="term" data-term="ten_cap">Ten Cap price</span> and the <span class="term" data-term="payback_time">Payback Time price</span>.</p>
+
+  <h2>5. Status and email alerts</h2>
+  <ul>
+    <li><span class="term" data-term="tier_buy">🟢 Buy zone</span>: at or below the MOS price, with at least 4 of the Big Five passing.</li>
+    <li><span class="term" data-term="tier_close">🟡 Getting close</span>: within 10% above the MOS price.</li>
+    <li><span class="term" data-term="tier_not_yet">⚪ Not yet</span>: everything else.</li>
+  </ul>
+  <p>The analysis runs every weekday after the US market closes. You get one email when a stock moves <b>into</b> a better status, not every day it stays there.</p>
+
+  <h2>6. Reading a stock page</h2>
+  <ul>
+    <li><b>Big Five table:</b> ✓ and ✗ for each window. Hover a cell to see which years were used.</li>
+    <li><b>Valuation, step by step:</b> every number with the formula that produced it.</li>
+    <li><b>Data warnings:</b> where the data was thin or unusual. Read them before trusting a number.</li>
+    <li><b>Use this data:</b> copy the yearly numbers into a spreadsheet, or a summary into an AI chat or your notes.</li>
+  </ul>
+
+  <h2>7. Limits</h2>
+  <p>Numbers come from company filings with the SEC and from Yahoo Finance. Filings vary between companies, so check the warnings. Rule #1 also uses judgement the tool can't do for you. This is a research tool, not financial advice.</p>
+</main>
+<script type="module">
+  import { initPage } from "./js/common.js";
+  initPage();
+</script>
+</body>
+</html>

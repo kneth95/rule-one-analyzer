@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rule #1 Watchlist</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">Rule #1 Analyzer</a>
+  <nav>
+    <a href="index.html" class="active">Watchlist</a>
+    <a href="guide.html">Guide</a>
+    <a href="settings.html">Settings</a>
+  </nav>
+  <button id="owner-btn" type="button" title="Owner access">🔑 Owner</button>
+</header>
+<main>
+  <h1>Watchlist</h1>
+  <p class="muted" id="updated">Loading…</p>
+
+  <section class="card owner-only">
+    <form id="add-form" class="row">
+      <input id="add-symbol" placeholder="Ticker, e.g. COST" aria-label="Ticker to add" maxlength="10" required />
+      <button class="primary">Add stock</button>
+      <button type="button" id="run-now">Analyze now</button>
+      <span class="muted">Changes show up after the analysis finishes (about 1–2 minutes).</span>
+    </form>
+  </section>
+
+  <section class="card">
+    <div class="table-wrap">
+      <table id="watchlist">
+        <thead><tr>
+          <th class="sortable" data-sort="symbol">Stock</th>
+          <th class="sortable left" data-sort="tier">Status</th>
+          <th class="sortable" data-sort="price">Price</th>
+          <th class="sortable" data-sort="mos"><span class="term" data-term="mos_price">MOS price</span></th>
+          <th class="sortable" data-sort="sticker"><span class="term" data-term="sticker_price">Sticker</span></th>
+          <th class="sortable" data-sort="pct"><span class="term" data-term="pct_from_mos">vs MOS</span></th>
+          <th class="sortable" data-sort="score"><span class="term" data-term="big_five_score">Big Five</span></th>
+          <th class="sortable" data-sort="debt"><span class="term" data-term="debt">Debt yrs</span></th>
+          <th class="owner-only"></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p id="empty" class="muted" hidden>No stocks yet. Use 🔑 Owner to add your token, then add a ticker.</p>
+  </section>
+
+  <section class="row">
+    <a class="button" href="data/csv/watchlist.csv" download>Download watchlist CSV</a>
+    <a class="button" href="data/results.json" target="_blank" rel="noopener">Raw results JSON</a>
+  </section>
+  <p class="muted">Data: SEC EDGAR filings and Yahoo Finance. This is a research tool, not financial advice.</p>
+</main>
+<script type="module" src="js/index.js"></script>
+</body>
+</html>
