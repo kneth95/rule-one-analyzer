@@ -51,9 +51,11 @@ def fetch_market(symbol, ticker_factory=None, sleep=time.sleep):
     if hist is None or hist.empty or "Close" not in hist or hist["Close"].dropna().empty:
         raise FetchError(f"Yahoo Finance returned no price history for {symbol}")
     if "Stock Splits" in hist:
+        # Monthly bars date a split at the start of its month; only use them for months the split list lacks.
+        known_months = {d[:7] for d in splits}
         for ts, r in hist["Stock Splits"].items():
-            if r and r > 0:
-                splits.setdefault(ts.strftime("%Y-%m-%d"), float(r))
+            if r and r > 0 and ts.strftime("%Y-%m") not in known_months:
+                splits[ts.strftime("%Y-%m-%d")] = float(r)
     closes = {ts.strftime("%Y-%m"): float(c) for ts, c in hist["Close"].dropna().items()}
     growth, warning = _analyst_growth(ticker)
     return MarketData(price=current, analyst_growth=growth, splits=sorted(splits.items()), monthly_closes=closes,

@@ -93,3 +93,14 @@ def test_analyst_fetch_failure_is_reported():
     m = fetch(BrokenEstimatesTicker())
     assert m.analyst_growth is None
     assert any("couldn't be downloaded" in w for w in m.warnings)
+
+
+class SplitInBothTicker(SplitInHistoryTicker):
+    def __init__(self):
+        idx = pd.to_datetime(["2024-06-10"]).tz_localize("America/New_York")
+        super().__init__(splits=pd.Series([10.0], index=idx))
+
+
+def test_split_reported_by_both_sources_counted_once():
+    m = fetch(SplitInBothTicker())
+    assert m.splits == [("2024-06-10", 10.0)]
