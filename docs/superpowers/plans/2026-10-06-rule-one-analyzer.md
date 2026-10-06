@@ -3908,4 +3908,3 @@ Run: `gh auth status`
   `gh api -X POST repos/{owner}/rule-one-analyzer/pages -f build_type=workflow`.
   Secrets need the owner's Gmail app password, so leave README steps 2, 3, 5 and 6 to the owner.
 - If not authenticated: stop and give the owner README step 1.
-````
