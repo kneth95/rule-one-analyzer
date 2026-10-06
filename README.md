@@ -36,9 +36,9 @@ close to (or into) its buy price, and publishes a dashboard that explains every 
 
 ### Discover
 
-Every Saturday a second workflow, **Discover S&P 500**, analyzes all S&P 500 companies (about 20 minutes) and fills
+Every Saturday a second workflow, **Discover S&P 500**, analyzes all S&P 500 companies (about 15 minutes) and fills
 the **Discover** tab with Buy zone, Getting close and "wonderful companies to watch" lists. Click **+ Watch** to move a
-company to your watchlist. To run it right away: Actions → Discover S&P 500 → Run workflow. Discover never sends email.
+company to your watchlist. To run it right away, click **Scan now** on the Discover tab (or Actions → Discover S&P 500 → Run workflow). Discover never sends email.
 Its data lives on the `discover-data` branch, which is overwritten each week.
 
 ## Privacy

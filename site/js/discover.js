@@ -1,7 +1,7 @@
 import { initPage, loadResults, term, toast } from "./common.js";
 import { attachTerms } from "./glossary.js";
 import { escapeHtml, money, num, signedPct } from "./format.js";
-import { actionsUrl } from "./github.js";
+import { actionsUrl, runDiscoverNow } from "./github.js";
 import { addToWatchlist } from "./watchlist.js";
 import { buildLists, WATCH_LIMIT } from "./discover-rank.js";
 
@@ -95,12 +95,25 @@ async function onClick(e) {
   if (tr) location.href = `stock.html?t=${encodeURIComponent(tr.dataset.symbol)}`;
 }
 
+async function onScanNow(e) {
+  e.target.disabled = true;
+  try {
+    await runDiscoverNow();
+    toast(`Scan started. Reload this page in about 15 minutes. <a href="${actionsUrl()}" target="_blank" rel="noopener">Watch the run</a>`, "ok");
+  } catch (err) {
+    toast(escapeHtml(err.message), "error");
+  } finally {
+    e.target.disabled = false;
+  }
+}
+
 async function main() {
   initPage();
+  document.querySelector("#scan-now").addEventListener("click", onScanNow);
   const res = await fetch("data/discover/discover.json", { cache: "no-store" });
   if (!res.ok) {
     document.querySelector("#summary").textContent =
-      "Discover hasn't run yet. Owner: on GitHub open Actions → Discover S&P 500 → Run workflow (takes about 20 minutes).";
+      "Discover hasn't run yet. Owner: click Scan now (or on GitHub: Actions → Discover S&P 500 → Run workflow). It takes about 15 minutes.";
     document.querySelector("#filters").hidden = true;
     return;
   }

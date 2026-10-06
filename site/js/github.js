@@ -82,9 +82,12 @@ export async function updateJsonFile(path, mutate, message) {
   return next;
 }
 
-export async function runAnalysisNow() {
-  await api("/actions/workflows/analyze.yml/dispatches", { method: "POST", body: JSON.stringify({ ref: BRANCH }) });
+async function runWorkflow(file) {
+  await api(`/actions/workflows/${file}/dispatches`, { method: "POST", body: JSON.stringify({ ref: BRANCH }) });
 }
+
+export const runAnalysisNow = () => runWorkflow("analyze.yml");
+export const runDiscoverNow = () => runWorkflow("discover.yml");
 
 export async function checkToken() {
   return api("");

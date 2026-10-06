@@ -37,3 +37,7 @@ def test_discover_schedule_and_concurrency():
     assert any("engine.discover" in s.get("run", "") for s in scan["steps"])
     assert any("push -f" in s.get("run", "") and "discover-data" in s.get("run", "") for s in scan["steps"])
     assert not any("GMAIL" in str(s.get("env", {})) for s in scan["steps"])
+
+
+def test_dashboard_changes_republish_the_site():
+    assert "site/**" in load("analyze.yml")["on"]["push"]["paths"]
