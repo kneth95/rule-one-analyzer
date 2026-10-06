@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-10-06T06:15:35Z",
+  "settings": {
+    "marr": 0.15,
+    "mos_fraction": 0.5,
+    "growth_cap": 0.15,
+    "pe_cap": 50,
+    "big_five_threshold": 0.1,
+    "big_five_min_score": 4,
+    "windows_to_pass": 3,
+    "trend_tolerance": 0.1,
+    "debt_payoff_max_years": 3,
+    "getting_close_margin": 0.1,
+    "payback_years": 8
+  },
+  "columns": [
+    [
+      "revenue",
+      "Revenue"
+    ],
+    [
+      "operating_income",
+      "Operating income"
+    ],
+    [
+      "pretax_income",
+      "Pre-tax income"
+    ],
+    [
+      "income_tax",
+      "Income tax"
+    ],
+    [
+      "net_income",
+      "Net income"
+    ],
+    [
+      "eps_diluted",
+      "EPS (diluted, split-adjusted)"
+    ],
+    [
+      "shares_diluted",
+      "Diluted shares (split-adjusted)"
+    ],
+    [
+      "equity",
+      "Shareholders' equity"
+    ],
+    [
+      "bvps",
+      "Book value per share"
+    ],
+    [
+      "total_debt",
+      "Long-term debt"
+    ],
+    [
+      "operating_cash_flow",
+      "Operating cash flow"
+    ],
+    [
+      "capex",
+      "Capital expenditures"
+    ],
+    [
+      "fcf",
+      "Free cash flow"
+    ],
+    [
+      "dep_amort",
+      "Depreciation & amortization"
+    ],
+    [
+      "change_ar",
+      "Change in accounts receivable"
+    ],
+    [
+      "change_ap",
+      "Change in accounts payable"
+    ],
+    [
+      "roic",
+      "ROIC"
+    ],
+    [
+      "pe",
+      "P/E at fiscal year end"
+    ]
+  ],
+  "stocks": []
+}
