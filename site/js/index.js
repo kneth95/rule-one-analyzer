@@ -2,6 +2,7 @@ import { badge, initPage, loadResults, toast } from "./common.js";
 import { attachTerms } from "./glossary.js";
 import { escapeHtml, money, num, signedPct } from "./format.js";
 import { actionsUrl, getToken, readJsonFile, runAnalysisNow, updateJsonFile } from "./github.js";
+import { addToWatchlist, normalizeTicker } from "./watchlist.js";
 
 const RANK = { buy: 0, close: 1, not_yet: 2 };
 const SORTERS = {
@@ -75,16 +76,12 @@ async function addPending() {
 async function onAdd(e) {
   e.preventDefault();
   const input = document.querySelector("#add-symbol");
-  const symbol = input.value.trim().toUpperCase().replace(".", "-");
-  if (!/^[A-Z][A-Z0-9-]{0,9}$/.test(symbol)) return toast("That doesn't look like a ticker symbol.", "error");
+  const symbol = normalizeTicker(input.value);
+  if (!symbol) return toast("That doesn't look like a ticker symbol.", "error");
   const btn = e.submitter;
   btn.disabled = true;
   try {
-    await updateJsonFile("watchlist.json", (w) => {
-      if (w.tickers.some((t) => t.symbol === symbol)) throw new Error(`${symbol} is already on the watchlist.`);
-      w.tickers.push({ symbol, added: new Date().toISOString().slice(0, 10), notes: "", growth_override: null });
-      return w;
-    }, `Add ${symbol} to watchlist`);
+    await addToWatchlist(symbol);
     input.value = "";
     stocks.push({ symbol, name: "", tier: "not_yet", pending: true });
     render();

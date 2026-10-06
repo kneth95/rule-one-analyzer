@@ -7,7 +7,7 @@ from tests.test_main import FakeSec, fake_market
 
 def table(rows):
     body = "".join(f"<tr><td>{s}</td><td>{n}</td><td>{sec}</td></tr>" for s, n, sec in rows)
-    return f'<table id="constituents"><tr><th>Symbol</th></tr>{body}</table>'
+    return f'<table id="constituents"><tr><th>Symbol</th><th>Security</th><th>GICS Sector</th></tr>{body}</table>'
 
 
 UNIVERSE = [("AAPL", "Apple Inc.", "Information Technology"), ("MSFT", "Microsoft", "Information Technology"),
@@ -69,7 +69,7 @@ def test_run_isolates_crashes_and_fetch_errors(tmp_path):
             raise FetchError("Yahoo throttled")
         return fake_market(100.0)(symbol)
 
-    code, out, _ = scan(tmp_path, market=market)
+    code, out, _ = scan(tmp_path, market=market, min_success=0)
     d = load(out)
     assert code == 0
     reasons = {f["symbol"]: f["reason"] for f in d["failed"]}
@@ -102,3 +102,13 @@ def test_discover_csv():
                           "mos_price": 2.0, "sticker_price": 4.0, "pct_from_mos": -0.5, "score": 5, "debt_years": None,
                           "growth_rate": 0.1, "stale": False}]).splitlines()
     assert rows[1] == 'A,"A, Inc.",Energy,Buy zone,1.0,2.0,4.0,-0.5,5,,0.1,'
+
+
+def test_run_refuses_to_publish_when_most_companies_fail(tmp_path):
+    def broken(symbol):
+        raise ValueError("yfinance changed")
+
+    universe = UNIVERSE[:2] + [("COST", "Costco", "Consumer Staples")]
+    code, out, _ = scan(tmp_path, market=broken, universe=universe)
+    assert code == 3
+    assert not (out / "discover.json").exists()

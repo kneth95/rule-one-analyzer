@@ -1,4 +1,7 @@
-"""Weekly S&P 500 scan: run the Rule #1 analysis on every constituent and write Discover data."""
+"""Weekly S&P 500 scan: run the Rule #1 analysis on every constituent and write Discover data.
+
+Exit codes: 0 ok, 2 settings or S&P list unavailable, 3 most companies failed (nothing written).
+"""
 import argparse
 import os
 import sys
@@ -41,7 +44,7 @@ def discover_csv(summaries):
 
 
 def run(out_dir, previous_dir, root, env, limit=None, sec=None, market_fetch=fetch_market,
-        fetch_html=fetch_wikipedia, sleep=time.sleep, now=None, min_rows=400, pause=0.5):
+        fetch_html=fetch_wikipedia, sleep=time.sleep, now=None, min_rows=400, pause=0.5, min_success=0.5):
     out, previous_dir, root = Path(out_dir), Path(previous_dir), Path(root)
     try:
         settings = load_settings(root / "settings.json")
@@ -67,6 +70,11 @@ def run(out_dir, previous_dir, root, env, limit=None, sec=None, market_fetch=fet
             continue
         write_json(out / "stocks" / f"{symbol}.json", stock)
         summaries.append(summarize(stock, company["name"], company["sector"]))
+
+    if scan_list and len(summaries) < min_success * len(scan_list):
+        print(f"Only {len(summaries)} of {len(scan_list)} companies could be analyzed; something is broken. "
+              "Not publishing, so last week's Discover data stays live.", file=sys.stderr)
+        return 3
 
     write_json(out / "discover.json", {
         "generated_at": now_iso, "settings": settings, "columns": [list(c) for c in HISTORY_COLUMNS],
