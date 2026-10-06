@@ -1,0 +1,89 @@
+name: Discover S&P 500
+
+on:
+  schedule:
+    - cron: "0 6 * * 6"   # Saturdays 06:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: discover
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pip install -r requirements.txt
+      - name: Run tests
+        run: |
+          python -m pytest -q
+          node --test "tests/js/*.test.mjs"
+      - name: Fetch last scan
+        run: |
+          mkdir -p prev
+          if git ls-remote --exit-code origin discover-data >/dev/null 2>&1; then
+            git fetch --depth 1 origin discover-data
+            git archive FETCH_HEAD | tar -x -C prev
+          fi
+      - name: Scan S&P 500
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python -m engine.discover --out discover-out --previous prev
+      - name: Publish scan to discover-data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd discover-out
+          git init -q -b discover-data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Discover scan $(date -u +%Y-%m-%d)"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" discover-data
+
+  deploy:
+    needs: scan
+    if: always()
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Bundle site with latest data
+        run: |
+          mkdir -p site/data
+          if [ -d data ]; then cp -r data/. site/data/; fi
+          if git ls-remote --exit-code origin discover-data >/dev/null 2>&1; then
+            git fetch --depth 1 origin discover-data
+            mkdir -p site/data/discover
+            git archive FETCH_HEAD | tar -x -C site/data/discover
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

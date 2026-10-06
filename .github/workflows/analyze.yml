@@ -61,6 +61,9 @@ jobs:
     needs: analyze
     if: always()
     runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     permissions:
       contents: read
       pages: write
@@ -76,6 +79,11 @@ jobs:
         run: |
           mkdir -p site/data
           if [ -d data ]; then cp -r data/. site/data/; fi
+          if git ls-remote --exit-code origin discover-data >/dev/null 2>&1; then
+            git fetch --depth 1 origin discover-data
+            mkdir -p site/data/discover
+            git archive FETCH_HEAD | tar -x -C site/data/discover
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
