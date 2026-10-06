@@ -1,7 +1,7 @@
 {
   "marr": 0.15,
   "mos_fraction": 0.5,
-  "growth_cap": 0.4,
+  "growth_cap": 0.15,
   "pe_cap": 50,
   "big_five_threshold": 0.1,
   "big_five_min_score": 4,
