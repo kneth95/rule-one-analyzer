@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T06:36:58Z",
+  "generated_at": "2026-10-06T06:42:48Z",
   "settings": {
     "marr": 0.15,
     "mos_fraction": 0.5,
@@ -91,7 +91,7 @@
     {
       "symbol": "AAPL",
       "name": "Apple Inc.",
-      "as_of": "2026-10-06T06:36:58Z",
+      "as_of": "2026-10-06T06:42:48Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -770,7 +770,7 @@
     {
       "symbol": "NVDA",
       "name": "NVIDIA CORP",
-      "as_of": "2026-10-06T06:36:58Z",
+      "as_of": "2026-10-06T06:42:48Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -1426,7 +1426,7 @@
     {
       "symbol": "BRK-A",
       "name": "BERKSHIRE HATHAWAY INC",
-      "as_of": "2026-10-06T06:36:58Z",
+      "as_of": "2026-10-06T06:42:48Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -1968,7 +1968,7 @@
     {
       "symbol": "GOOGL",
       "name": "Alphabet Inc.",
-      "as_of": "2026-10-06T06:36:58Z",
+      "as_of": "2026-10-06T06:42:48Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -2501,7 +2501,7 @@
     {
       "symbol": "GOOG",
       "name": "Alphabet Inc.",
-      "as_of": "2026-10-06T06:36:58Z",
+      "as_of": "2026-10-06T06:42:48Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -3030,23 +3030,6 @@
         "Equity growth 5-year: start moved from 2020 to 2022 (missing or negative value).",
         "No analyst 5-year growth estimate available; using historical equity growth only."
       ]
-    },
-    {
-      "symbol": "TSM",
-      "name": "",
-      "as_of": "2026-10-06T06:36:58Z",
-      "stale": false,
-      "stale_reason": null,
-      "error": "No annual 10-K financial data found in SEC filings",
-      "notes": "",
-      "growth_override": null,
-      "price": null,
-      "tier": "not_yet",
-      "tier_reason": "Not yet: the analysis couldn't run (see the error).",
-      "big_five": null,
-      "valuation": null,
-      "history": null,
-      "warnings": []
     }
   ]
 }
