@@ -34,6 +34,13 @@ close to (or into) its buy price, and publishes a dashboard that explains every 
   or **Copy for AI / notes** for a Markdown summary.
 - Change thresholds on the **Settings** page.
 
+### Discover
+
+Every Saturday a second workflow, **Discover S&P 500**, analyzes all S&P 500 companies (about 20 minutes) and fills
+the **Discover** tab with Buy zone, Getting close and "wonderful companies to watch" lists. Click **+ Watch** to move a
+company to your watchlist. To run it right away: Actions → Discover S&P 500 → Run workflow. Discover never sends email.
+Its data lives on the `discover-data` branch, which is overwritten each week.
+
 ## Privacy
 
 Anyone with the link can **view** the dashboard, your watchlist and settings. Only you can **change** them:

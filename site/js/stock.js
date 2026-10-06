@@ -1,7 +1,8 @@
 import { badge, initPage, loadResults, term, toast } from "./common.js";
 import { attachTerms } from "./glossary.js";
-import { bigMoney, escapeHtml, historyRows, money, num, pct, signedPct, stockMarkdown, toTsv } from "./format.js";
+import { bigMoney, escapeHtml, historyRows, money, num, pct, signedPct, stockMarkdown, toCsv, toTsv } from "./format.js";
 import { actionsUrl, updateJsonFile } from "./github.js";
+import { addToWatchlist } from "./watchlist.js";
 
 const METRIC_TERMS = { roic: "roic", sales: "sales_growth", eps: "eps_growth", equity: "equity_growth", fcf: "fcf_growth" };
 const CHARTS = [["revenue", "Revenue", bigMoney], ["eps_diluted", "EPS", money], ["bvps", "Book value per share", money],
@@ -70,17 +71,20 @@ function inputsSection(s) {
   </section>`;
 }
 
-function render(s, results) {
+function render(s, results, source) {
   const v = s.valuation;
   document.title = `${s.symbol} – Rule #1`;
   const banners = [
     s.error ? `<p class="banner error">${escapeHtml(s.error)}</p>` : "",
     s.stale ? `<p class="banner">${term("stale", "Stale data")}: ${escapeHtml(s.stale_reason)}</p>` : "",
     s.growth_override != null ? `<p class="banner">Using your growth override of ${pct(s.growth_override)}.</p>` : "",
+    source === "discover" ? `<p class="banner">From the weekly ${term("discover", "S&P 500 scan")} on ${new Date(s.as_of).toLocaleDateString()}.
+      Add it to your watchlist for daily updates and email alerts. <button id="watch-btn" class="owner-only primary">+ Watch</button></p>` : "",
   ].join("");
+  const inputs = source === "watchlist" ? inputsSection(s) : "";
   const head = `<h1>${escapeHtml(s.symbol)} <span class="muted">${escapeHtml(s.name)}</span></h1>
     <p>${badge(s.tier)} ${escapeHtml(s.tier_reason)}</p>${banners}`;
-  if (s.error) return head + inputsSection(s);
+  if (s.error) return head + inputs;
   return head + `
     <section class="card grid">
       ${stat("Price", money(s.price))}
@@ -95,14 +99,14 @@ function render(s, results) {
     </div></section>
     ${valuationSection(v, results.settings)}
     ${s.warnings.length ? `<section class="card"><h2>Data warnings</h2><ul class="warnings">${s.warnings.map((w) => `<li>${escapeHtml(w)}</li>`).join("")}</ul></section>` : ""}
-    ${inputsSection(s)}
+    ${inputs}
     <section class="card">
       <h2>Use this data</h2>
       <p class="muted">Copy everything for a spreadsheet or for an AI chat / notes.</p>
       <div class="row">
         <button id="copy-table">Copy as table</button>
         <button id="copy-md">Copy for AI / notes</button>
-        <a class="button" href="data/csv/${encodeURIComponent(s.symbol)}.csv" download>Download CSV</a>
+        ${source === "watchlist" ? `<a class="button" href="data/csv/${encodeURIComponent(s.symbol)}.csv" download>Download CSV</a>` : `<button id="download-csv">Download CSV</button>`}
       </div>
     </section>
     <p class="muted">Analyzed ${new Date(s.as_of).toLocaleString()}. Data: SEC EDGAR and Yahoo Finance. Not financial advice.</p>`;
@@ -144,6 +148,22 @@ async function copy(text, what) {
 function wire(s, results) {
   document.querySelector("#copy-table")?.addEventListener("click", () => copy(toTsv(historyRows(s, results.columns)), "Table"));
   document.querySelector("#copy-md")?.addEventListener("click", () => copy(stockMarkdown(s, results.columns), "Summary"));
+  document.querySelector("#download-csv")?.addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob([toCsv(historyRows(s, results.columns))], { type: "text/csv" }));
+    Object.assign(document.createElement("a"), { href: url, download: `${s.symbol}.csv` }).click();
+    URL.revokeObjectURL(url);
+  });
+  document.querySelector("#watch-btn")?.addEventListener("click", async (e) => {
+    e.target.disabled = true;
+    try {
+      await addToWatchlist(s.symbol);
+      e.target.outerHTML = `<b>✓ Added.</b>`;
+      toast(`${escapeHtml(s.symbol)} added to your watchlist. Results in about 1–2 minutes. <a href="${actionsUrl()}" target="_blank" rel="noopener">Watch the run</a>`, "ok");
+    } catch (err) {
+      e.target.disabled = false;
+      toast(escapeHtml(err.message), "error");
+    }
+  });
   document.querySelector("#inputs-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -169,18 +189,32 @@ function wire(s, results) {
   });
 }
 
+async function loadStock(symbol) {
+  let results = null;
+  try {
+    results = await loadResults();
+  } catch { /* no watchlist results yet */ }
+  const s = results?.stocks.find((x) => x.symbol === symbol);
+  if (s) return { s, results, source: "watchlist" };
+  if (!symbol) return null;
+  const res = await fetch(`data/discover/stocks/${encodeURIComponent(symbol)}.json`, { cache: "no-store" });
+  if (!res.ok) return null;
+  const scan = await fetch("data/discover/discover.json", { cache: "no-store" }).then((r) => r.json());
+  return { s: await res.json(), results: { settings: scan.settings, columns: scan.columns }, source: "discover" };
+}
+
 async function main() {
   initPage();
   const container = document.querySelector("#content");
   const symbol = new URLSearchParams(location.search).get("t");
   try {
-    const results = await loadResults();
-    const s = results.stocks.find((x) => x.symbol === symbol);
-    if (!s) {
-      container.innerHTML = `<p class="banner">${escapeHtml(symbol || "That stock")} isn't in the latest results. <a href="index.html">Back to the watchlist</a></p>`;
+    const found = await loadStock(symbol);
+    if (!found) {
+      container.innerHTML = `<p class="banner">${escapeHtml(symbol || "That stock")} isn't in your watchlist results or the latest S&amp;P 500 scan. <a href="index.html">Back to the watchlist</a></p>`;
       return;
     }
-    container.innerHTML = render(s, results);
+    const { s, results, source } = found;
+    container.innerHTML = render(s, results, source);
     attachTerms(container);
     wire(s, results);
     if (s.history) drawCharts(s);

@@ -37,6 +37,9 @@ export const GLOSSARY = {
   tier_close: { term: "🟡 Getting close", what: "Price is within 10% above the MOS price and at least 4 of the Big Five pass.", why: "An early warning so you can finish your research before it hits the Buy zone.", good: "—" },
   tier_not_yet: { term: "⚪ Not yet", what: "The price is too high, the Big Five are too weak, or the numbers couldn't be calculated.", why: "Wonderful companies are worth waiting for.", good: "—" },
   stale: { term: "Stale", what: "The latest data couldn't be downloaded, so the last good results are shown.", why: "Stale results never send alerts, to avoid acting on old prices.", good: "It usually fixes itself on the next run." },
+  discover: { term: "Discover", what: "A weekly scan of every S&P 500 company with the same Rule #1 analysis your watchlist gets.", why: "It finds wonderful companies you aren't following yet.", good: "Treat results as research leads. Judge Meaning, Moat and Management before buying." },
+  wonderful_watch: { term: "⭐ Wonderful companies to watch", what: "Companies with at least 4 Big Five passes and manageable debt that are still above their MOS price, closest to it first (top 25).", why: "Rule #1 bargains are rare. Studying great businesses now means you're ready when the price drops.", good: "Add the ones you understand to your watchlist; you'll get an email when they reach Getting close or Buy zone." },
+  sector: { term: "Sector", what: "The company's industry group (GICS sector), e.g. Information Technology or Consumer Staples.", why: "Filtering by sector helps you stay inside businesses you understand (Meaning).", good: "—" },
   growth_override: { term: "Growth override", what: "A growth rate you set yourself for this stock, replacing the automatic one.", why: "Use it when the automatic estimate looks wrong, e.g. after a one-off year.", good: "Be conservative. A decimal like 0.12 means 12%." },
 };
 

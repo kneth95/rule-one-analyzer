@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Discover Rule #1 Stocks</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">Rule #1 Analyzer</a>
+  <nav>
+    <a href="index.html">Watchlist</a>
+    <a href="discover.html" class="active">Discover</a>
+    <a href="guide.html">Guide</a>
+    <a href="settings.html">Settings</a>
+  </nav>
+  <button id="owner-btn" type="button" title="Owner access">🔑 Owner</button>
+</header>
+<main>
+  <h1><span class="term" data-term="discover">Discover</span></h1>
+  <p class="muted" id="summary">Loading…</p>
+  <p class="banner">These are research leads, not buy signals. Rule #1 still needs you to judge
+    <span class="term" data-term="meaning">Meaning</span>, <span class="term" data-term="moat">Moat</span> and
+    <span class="term" data-term="management">Management</span> before buying.</p>
+  <div id="scan-warnings"></div>
+
+  <form id="filters" class="card row">
+    <label><span class="term" data-term="sector">Sector</span>
+      <select name="sector"><option value="">All sectors</option></select></label>
+    <label><span class="term" data-term="big_five_score">Min Big Five</span>
+      <select name="minScore"></select></label>
+    <label class="row"><input type="checkbox" name="hideWatched" /> Hide stocks on my watchlist</label>
+  </form>
+
+  <div id="lists"></div>
+
+  <details class="card" id="failed-box" hidden>
+    <summary id="failed-summary"></summary>
+    <ul id="failed-list" class="warnings"></ul>
+  </details>
+
+  <section class="row">
+    <a class="button" href="data/discover/csv/discover.csv" download>Download full scan CSV</a>
+  </section>
+  <p class="muted">Data: S&amp;P 500 list from Wikipedia, filings from SEC EDGAR, prices from Yahoo Finance. Not financial advice.</p>
+</main>
+<script type="module" src="js/discover.js"></script>
+</body>
+</html>
