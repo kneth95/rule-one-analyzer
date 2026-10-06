@@ -93,3 +93,13 @@ export function stockMarkdown(stock, columns) {
   }
   return lines.join("\n");
 }
+
+const csvCell = (c) => {
+  if (c == null) return "";
+  const s = String(c);
+  return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+};
+
+export function toCsv(rows) {
+  return rows.map((r) => r.map(csvCell).join(",")).join("\n") + "\n";
+}

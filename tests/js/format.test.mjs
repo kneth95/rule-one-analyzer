@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { money, bigMoney, pct, signedPct, historyRows, toTsv, stockMarkdown, escapeHtml } from "../../site/js/format.js";
+import { money, bigMoney, pct, signedPct, historyRows, toTsv, stockMarkdown, escapeHtml, toCsv } from "../../site/js/format.js";
 
 const columns = [["revenue", "Revenue"], ["roic", "ROIC"]];
 const stock = {
@@ -50,4 +50,8 @@ test("stockMarkdown includes key numbers and warnings", () => {
 
 test("escapeHtml", () => {
   assert.equal(escapeHtml(`<a href="x">&</a>`), "&lt;a href=&quot;x&quot;&gt;&amp;&lt;/a&gt;");
+});
+
+test("toCsv quotes commas, quotes and newlines", () => {
+  assert.equal(toCsv([["Year", "Name"], [2024, 'A, "B"'], [null, "x\ny"]]), 'Year,Name\n2024,"A, ""B"""\n,"x\ny"\n');
 });
