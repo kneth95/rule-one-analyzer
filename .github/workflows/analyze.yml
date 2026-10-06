@@ -1,0 +1,76 @@
+name: Analyze watchlist
+
+on:
+  schedule:
+    - cron: "0 22 * * 1-5"   # weekdays 22:00 UTC, after the US market closes
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [watchlist.json, settings.json]
+
+concurrency:
+  group: analyze
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pip install -r requirements.txt
+      - name: Run tests
+        run: |
+          python -m pytest -q
+          node --test "tests/js/*.test.mjs"
+      - name: Analyze and send alerts
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+        run: python -m engine.main
+      - name: Save results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then echo "No result changes"; exit 0; fi
+          git commit -m "Update analysis results"
+          git pull --rebase origin main
+          git push
+
+  deploy:
+    needs: analyze
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Bundle site with latest data
+        run: |
+          mkdir -p site/data
+          if [ -d data ]; then cp -r data/. site/data/; fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
