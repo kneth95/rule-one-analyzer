@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-06T08:43:44Z",
+  "generated_at": "2026-10-06T08:46:09Z",
   "settings": {
     "marr": 0.15,
     "mos_fraction": 0.5,
-    "growth_cap": 0.15,
+    "growth_cap": 0.4,
     "pe_cap": 50,
     "big_five_threshold": 0.1,
     "big_five_min_score": 4,
@@ -91,7 +91,7 @@
     {
       "symbol": "AAPL",
       "name": "Apple Inc.",
-      "as_of": "2026-10-06T08:43:44Z",
+      "as_of": "2026-10-06T08:46:09Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -770,15 +770,15 @@
     {
       "symbol": "NVDA",
       "name": "NVIDIA CORP",
-      "as_of": "2026-10-06T08:43:44Z",
+      "as_of": "2026-10-06T08:46:09Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
       "notes": "",
       "growth_override": null,
       "price": 238.89999389648438,
-      "tier": "not_yet",
-      "tier_reason": "Not yet: the price is 225% above the MOS price.",
+      "tier": "buy",
+      "tier_reason": "Buy zone: the price ($238.90) is at or below the MOS price ($875.87) and 4 of 5 Big Five numbers pass.",
       "big_five": {
         "score": 4,
         "metrics": {
@@ -998,8 +998,8 @@
       },
       "valuation": {
         "computable": true,
-        "growth_rate": 0.15,
-        "growth_source": "historical equity growth (capped at 15%)",
+        "growth_rate": 0.4,
+        "growth_source": "historical equity growth (capped at 40%)",
         "equity_growth": 0.4171822743991569,
         "analyst_growth": null,
         "price": 238.89999389648438,
@@ -1007,17 +1007,17 @@
         "eps_year": 2025,
         "historical_pe_avg": 55.262602668371,
         "historical_pe_years": 10,
-        "pe_from_growth": 30.0,
-        "future_eps": 19.823232904968744,
-        "future_pe": 30.0,
-        "future_price": 594.6969871490624,
-        "sticker_price": 147.00000000000003,
-        "mos_price": 73.50000000000001,
-        "pct_from_mos": 2.2503400530133923,
+        "pe_from_growth": 80.0,
+        "future_eps": 141.73478093823994,
+        "future_pe": 50,
+        "future_price": 7086.739046911996,
+        "sticker_price": 1751.7335086732937,
+        "mos_price": 875.8667543366469,
+        "pct_from_mos": -0.7272416235533229,
         "owner_earnings_ps": 5.261034510891736,
         "ten_cap_price": 52.61034510891736,
         "fcf_ps": 3.9437056375948436,
-        "payback_price": 62.25471387714511
+        "payback_price": 189.899746970097
       },
       "history": {
         "years": [
@@ -1426,7 +1426,7 @@
     {
       "symbol": "GOOGL",
       "name": "Alphabet Inc.",
-      "as_of": "2026-10-06T08:43:44Z",
+      "as_of": "2026-10-06T08:46:09Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -1434,7 +1434,7 @@
       "growth_override": null,
       "price": 346.4700012207031,
       "tier": "not_yet",
-      "tier_reason": "Not yet: the price is 121% above the MOS price.",
+      "tier_reason": "Not yet: the price is 40% above the MOS price.",
       "big_five": {
         "score": 4,
         "metrics": {
@@ -1654,8 +1654,8 @@
       },
       "valuation": {
         "computable": true,
-        "growth_rate": 0.15,
-        "growth_source": "historical equity growth (capped at 15%)",
+        "growth_rate": 0.20377648977367868,
+        "growth_source": "historical equity growth",
         "equity_growth": 0.20377648977367868,
         "analyst_growth": null,
         "price": 346.4700012207031,
@@ -1663,17 +1663,17 @@
         "eps_year": 2025,
         "historical_pe_avg": 28.979556441512234,
         "historical_pe_years": 10,
-        "pe_from_growth": 30.0,
-        "future_eps": 43.73247912300247,
+        "pe_from_growth": 40.75529795473574,
+        "future_eps": 69.06917447035319,
         "future_pe": 28.979556441512234,
-        "future_price": 1267.3478470723055,
-        "sticker_price": 313.2690051327472,
-        "mos_price": 156.6345025663736,
-        "pct_from_mos": 1.2119647685789219,
+        "future_price": 2001.594039932256,
+        "sticker_price": 494.76343453593296,
+        "mos_price": 247.38171726796648,
+        "pct_from_mos": 0.400548128806961,
         "owner_earnings_ps": 10.33250204415372,
         "ten_cap_price": 103.3250204415372,
         "fcf_ps": 5.99067865903516,
-        "payback_price": 94.56790646159986
+        "payback_price": 120.65057979045953
       },
       "history": {
         "years": [
@@ -1959,7 +1959,7 @@
     {
       "symbol": "GOOG",
       "name": "Alphabet Inc.",
-      "as_of": "2026-10-06T08:43:44Z",
+      "as_of": "2026-10-06T08:46:09Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -1967,7 +1967,7 @@
       "growth_override": null,
       "price": 343.8299865722656,
       "tier": "not_yet",
-      "tier_reason": "Not yet: the price is 120% above the MOS price.",
+      "tier_reason": "Not yet: the price is 39% above the MOS price.",
       "big_five": {
         "score": 4,
         "metrics": {
@@ -2187,8 +2187,8 @@
       },
       "valuation": {
         "computable": true,
-        "growth_rate": 0.15,
-        "growth_source": "historical equity growth (capped at 15%)",
+        "growth_rate": 0.20377648977367868,
+        "growth_source": "historical equity growth",
         "equity_growth": 0.20377648977367868,
         "analyst_growth": null,
         "price": 343.8299865722656,
@@ -2196,17 +2196,17 @@
         "eps_year": 2025,
         "historical_pe_avg": 28.88992692763198,
         "historical_pe_years": 10,
-        "pe_from_growth": 30.0,
-        "future_eps": 43.73247912300247,
+        "pe_from_growth": 40.75529795473574,
+        "future_eps": 69.06917447035319,
         "future_pe": 28.88992692763198,
-        "future_price": 1263.4281262277325,
-        "sticker_price": 312.3001100877017,
-        "mos_price": 156.15005504385084,
-        "pct_from_mos": 1.2019203674037104,
+        "future_price": 1995.4034034003678,
+        "sticker_price": 493.23320386409085,
+        "mos_price": 246.61660193204543,
+        "pct_from_mos": 0.3941883225972236,
         "owner_earnings_ps": 10.33250204415372,
         "ten_cap_price": 103.3250204415372,
         "fcf_ps": 5.99067865903516,
-        "payback_price": 94.56790646159986
+        "payback_price": 120.65057979045953
       },
       "history": {
         "years": [
@@ -2492,7 +2492,7 @@
     {
       "symbol": "PGR",
       "name": "PROGRESSIVE CORP/OH/",
-      "as_of": "2026-10-06T08:43:44Z",
+      "as_of": "2026-10-06T08:46:09Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -2500,7 +2500,7 @@
       "growth_override": null,
       "price": 212.6199951171875,
       "tier": "buy",
-      "tier_reason": "Buy zone: the price ($212.62) is at or below the MOS price ($246.42) and 4 of 5 Big Five numbers pass.",
+      "tier_reason": "Buy zone: the price ($212.62) is at or below the MOS price ($253.85) and 4 of 5 Big Five numbers pass.",
       "big_five": {
         "score": 4,
         "metrics": {
@@ -2720,8 +2720,8 @@
       },
       "valuation": {
         "computable": true,
-        "growth_rate": 0.15,
-        "growth_source": "historical equity growth (capped at 15%)",
+        "growth_rate": 0.1534245588573362,
+        "growth_source": "historical equity growth",
         "equity_growth": 0.1534245588573362,
         "analyst_growth": null,
         "price": 212.6199951171875,
@@ -2729,17 +2729,17 @@
         "eps_year": 2025,
         "historical_pe_avg": 25.628196540158644,
         "historical_pe_years": 10,
-        "pe_from_growth": 30.0,
-        "future_eps": 77.79607525766305,
+        "pe_from_growth": 30.684911771467238,
+        "future_eps": 80.14403914810023,
         "future_pe": 25.628196540158644,
-        "future_price": 1993.7731067563616,
-        "sticker_price": 492.83021946725074,
-        "mos_price": 246.41510973362537,
-        "pct_from_mos": -0.13714708750194082,
+        "future_price": 2053.947186809681,
+        "sticker_price": 507.70433176138414,
+        "mos_price": 253.85216588069207,
+        "pct_from_mos": -0.16242591675535778,
         "owner_earnings_ps": 27.066825369835062,
         "ten_cap_price": 270.6682536983506,
         "fcf_ps": 29.246726747151843,
-        "payback_price": 461.6842058722739
+        "payback_price": 468.9144660210405
       },
       "history": {
         "years": [
