@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T08:46:09Z",
+  "generated_at": "2026-10-06T11:17:57Z",
   "settings": {
     "marr": 0.15,
     "mos_fraction": 0.5,
@@ -91,7 +91,7 @@
     {
       "symbol": "AAPL",
       "name": "Apple Inc.",
-      "as_of": "2026-10-06T08:46:09Z",
+      "as_of": "2026-10-06T11:17:57Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -770,7 +770,7 @@
     {
       "symbol": "NVDA",
       "name": "NVIDIA CORP",
-      "as_of": "2026-10-06T08:46:09Z",
+      "as_of": "2026-10-06T11:17:57Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -1426,7 +1426,7 @@
     {
       "symbol": "GOOGL",
       "name": "Alphabet Inc.",
-      "as_of": "2026-10-06T08:46:09Z",
+      "as_of": "2026-10-06T11:17:57Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -1959,7 +1959,7 @@
     {
       "symbol": "GOOG",
       "name": "Alphabet Inc.",
-      "as_of": "2026-10-06T08:46:09Z",
+      "as_of": "2026-10-06T11:17:57Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -2492,7 +2492,7 @@
     {
       "symbol": "PGR",
       "name": "PROGRESSIVE CORP/OH/",
-      "as_of": "2026-10-06T08:46:09Z",
+      "as_of": "2026-10-06T11:17:57Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
