@@ -59,7 +59,7 @@ def analyze_ticker(entry, sec, market_fetch, settings, now_iso):
     big_five = analyze_big_five(fin, settings)
     valuation = analyze_valuation(fin, market, big_five, entry.get("growth_override"), settings)
     tier, reason = assign_tier(market.price, valuation["mos_price"], big_five["score"], settings)
-    warnings = fin.warnings + big_five.pop("warnings") + valuation.pop("warnings")
+    warnings = market.warnings + fin.warnings + big_five.pop("warnings") + valuation.pop("warnings")
     return {
         "symbol": symbol, "name": fin.name, "as_of": now_iso, "stale": False, "stale_reason": None,
         "error": None, "notes": entry.get("notes", ""), "growth_override": entry.get("growth_override"),

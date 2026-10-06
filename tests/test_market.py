@@ -56,3 +56,40 @@ def test_missing_price_raises_fetch_error():
 def test_history_failure_raises_fetch_error():
     with pytest.raises(FetchError):
         fetch(FakeTicker(fail_history=True))
+
+
+class SplitInHistoryTicker(FakeTicker):
+    def history(self, **kwargs):
+        idx = pd.to_datetime(["2024-05-01", "2024-06-01"]).tz_localize("America/New_York")
+        return pd.DataFrame({"Close": [100.0, 12.0], "Stock Splits": [0.0, 10.0]}, index=idx)
+
+
+class EmptyHistoryTicker(FakeTicker):
+    def history(self, **kwargs):
+        return pd.DataFrame({"Close": []})
+
+
+class BrokenEstimatesTicker(FakeTicker):
+    @property
+    def growth_estimates(self):
+        raise RuntimeError("rate limited")
+
+    @growth_estimates.setter
+    def growth_estimates(self, v):
+        pass
+
+
+def test_splits_also_read_from_history():
+    m = fetch(SplitInHistoryTicker())
+    assert m.splits == [("2024-06-01", 10.0)]
+
+
+def test_empty_history_raises_fetch_error():
+    with pytest.raises(FetchError, match="history"):
+        fetch(EmptyHistoryTicker())
+
+
+def test_analyst_fetch_failure_is_reported():
+    m = fetch(BrokenEstimatesTicker())
+    assert m.analyst_growth is None
+    assert any("couldn't be downloaded" in w for w in m.warnings)

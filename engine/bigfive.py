@@ -69,6 +69,8 @@ def _metric(key, fin, settings, warnings):
     available = [w for w in windows.values() if w["available"]]
     passes = sum(1 for w in available if w["pass"])
     required = min(int(settings["windows_to_pass"]), len(available))
+    if len(available) < 2:
+        warnings.append(f"{METRICS[key]}: Not enough history to judge (needs at least 2 of the 10/5/3/1-year windows).")
     long_v, one_v = longest_value(windows), windows["1"]["value"]
     trend_ok = long_v is None or one_v is None or one_v >= long_v - settings["trend_tolerance"]
     return {
@@ -77,15 +79,17 @@ def _metric(key, fin, settings, warnings):
         "passes": passes,
         "required": required,
         "trend_ok": trend_ok,
-        "pass": bool(available) and passes >= required and trend_ok,
+        "pass": len(available) >= 2 and passes >= required and trend_ok,
     }
 
 
 def _debt(fin, settings):
     y = fin.latest_year
-    debt = fin.get("total_debt", y) or 0.0
+    debt = fin.get("total_debt", y)
     fcf = fin.get("fcf", y)
-    if debt <= 0:
+    if debt is None:
+        years, ok = None, False
+    elif debt <= 0:
         years, ok = 0.0, True
     elif fcf is None or fcf <= 0:
         years, ok = None, False

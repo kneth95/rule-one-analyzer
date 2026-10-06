@@ -119,3 +119,17 @@ def test_no_debt_passes():
 def test_longest_value():
     assert longest_value({"10": {"value": None}, "5": {"value": 0.2}, "3": {"value": 0.1}, "1": {"value": 0.3}}) == 0.2
     assert longest_value({"10": {"value": None}, "5": {"value": None}, "3": {"value": None}, "1": {"value": 0.3}}) is None
+
+
+def test_metric_needs_at_least_two_windows():
+    series = {k: {y: v for y, v in s.items() if y >= 2024} for k, s in healthy(rate=0.30).items()}
+    result = analyze_big_five(make_fin(series), DEFAULT_SETTINGS)
+    assert result["metrics"]["sales"]["pass"] is False
+    assert result["score"] == 0
+    assert any("Not enough history" in w for w in result["warnings"])
+
+
+def test_missing_latest_debt_fails_debt_check():
+    fin = make_fin({**healthy(), "total_debt": {2024: 500.0, 2025: None}})
+    debt = analyze_big_five(fin, DEFAULT_SETTINGS)["debt"]
+    assert debt["pass"] is False and debt["total_debt"] is None

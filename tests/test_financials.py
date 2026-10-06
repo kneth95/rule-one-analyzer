@@ -150,3 +150,17 @@ def test_cost_fixture_53_week_years():
     fin = build_financials(load("COST"), [])
     assert fin.fy_end[2017] == "2017-09-03"
     assert fin.get("equity", 2017) == 10778000000
+
+
+def test_debt_missing_in_latest_year_is_unknown_not_zero():
+    doc = facts_doc({
+        "NetIncomeLoss": [annual(2023, 1), annual(2024, 1)],
+        "OperatingIncomeLoss": [annual(2023, 10), annual(2024, 10)],
+        "StockholdersEquity": [fact(None, "2023-12-31", 50, "2024-02-15"), fact(None, "2024-12-31", 50, "2025-02-15")],
+        "LongTermDebt": [fact(None, "2023-12-31", 77, "2024-02-15")],
+    })
+    fin = build_financials(doc, [])
+    assert fin.get("total_debt", 2023) == 77
+    assert fin.get("total_debt", 2024) is None
+    assert fin.get("roic", 2024) is None
+    assert any("2024" in w and "debt" in w for w in fin.warnings)

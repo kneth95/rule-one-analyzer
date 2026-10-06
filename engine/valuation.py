@@ -8,6 +8,8 @@ def choose_growth(equity_growth, analyst_growth, override, cap):
     warnings = []
     if analyst_growth is None:
         warnings.append("No analyst 5-year growth estimate available; using historical equity growth only.")
+    elif equity_growth is None:
+        warnings.append("No historical equity growth available; using the analyst estimate only.")
     options = [(g, s) for g, s in ((equity_growth, "historical equity growth"),
                                    (analyst_growth, "analyst estimate")) if g is not None]
     if not options:

@@ -179,6 +179,10 @@ def _derive(data, years, warnings):
         elif g("lt_debt_noncurrent") is not None:
             total_debt[y] = g("lt_debt_noncurrent") + (g("lt_debt_current") or 0.0)
             any_debt = True
+        elif any_debt and y == years[-1]:
+            total_debt[y] = None
+            warnings.append(f"No long-term debt figure found for {y} although earlier years had debt; "
+                            f"{y} debt is treated as unknown and the debt check fails.")
         else:
             total_debt[y] = 0.0
 
@@ -189,7 +193,7 @@ def _derive(data, years, warnings):
             bvps[y] = g("equity") / g("shares_diluted")
 
         op, eq = g("operating_income"), g("equity")
-        if op is not None and eq is not None:
+        if op is not None and eq is not None and total_debt[y] is not None:
             pretax, tax = g("pretax_income"), g("income_tax")
             if pretax and pretax > 0 and tax is not None:
                 rate = min(max(tax / pretax, 0.0), 0.5)

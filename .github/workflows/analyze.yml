@@ -18,7 +18,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      # Always start from the latest main, so a queued run sees the data/ the previous run pushed.
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -46,8 +49,13 @@ jobs:
           git add data
           if git diff --cached --quiet; then echo "No result changes"; exit 0; fi
           git commit -m "Update analysis results"
-          git pull --rebase origin main
-          git push
+          # A dashboard edit may have landed meanwhile; keep this run's data/ on conflicts and retry.
+          for attempt in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          exit 1
 
   deploy:
     needs: analyze

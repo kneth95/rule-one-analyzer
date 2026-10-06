@@ -94,3 +94,9 @@ def test_ten_cap_and_payback():
     # FCF/share 1.0 growing 10% for 8 years
     assert v["fcf_ps"] == pytest.approx(1.0)
     assert v["payback_price"] == pytest.approx(12.57947691)
+
+
+def test_choose_growth_warns_when_only_analyst_available():
+    g, source, warnings = choose_growth(None, 0.09, None, 0.15)
+    assert g == 0.09 and source == "analyst estimate"
+    assert any("equity growth" in w for w in warnings)
