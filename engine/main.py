@@ -70,6 +70,20 @@ def analyze_ticker(entry, sec, market_fetch, settings, now_iso):
     }
 
 
+def analyze_with_fallback(entry, sec, market_fetch, settings, now_iso, prev):
+    """analyze_ticker, falling back to the previous result (marked stale) when data can't be downloaded."""
+    try:
+        return analyze_ticker(entry, sec, market_fetch, settings, now_iso)
+    except FetchError as e:
+        if prev and not prev.get("error"):
+            return {**prev, "stale": True, "stale_reason": f"{e} Showing results from {prev['as_of']}.",
+                    "notes": entry.get("notes", ""), "growth_override": entry.get("growth_override")}
+        return error_result(entry, f"Data couldn't be downloaded: {e}", now_iso)
+    except Exception as e:
+        traceback.print_exc()
+        return error_result(entry, f"Analysis failed: {e}", now_iso)
+
+
 def run(root, env, sec=None, market_fetch=fetch_market, smtp_factory=smtplib.SMTP_SSL, now=None, send=True):
     root = Path(root)
     try:
@@ -86,21 +100,8 @@ def run(root, env, sec=None, market_fetch=fetch_market, smtp_factory=smtplib.SMT
 
     stocks = []
     for entry in watchlist:
-        symbol = entry["symbol"]
-        print(f"Analyzing {symbol}...")
-        try:
-            stock = analyze_ticker(entry, sec, market_fetch, settings, now_iso)
-        except FetchError as e:
-            prev = previous.get(symbol)
-            if prev and not prev.get("error"):
-                stock = {**prev, "stale": True, "stale_reason": f"{e} Showing results from {prev['as_of']}.",
-                         "notes": entry.get("notes", ""), "growth_override": entry.get("growth_override")}
-            else:
-                stock = error_result(entry, f"Data couldn't be downloaded: {e}", now_iso)
-        except Exception as e:
-            traceback.print_exc()
-            stock = error_result(entry, f"Analysis failed: {e}", now_iso)
-        stocks.append(stock)
+        print(f"Analyzing {entry['symbol']}...")
+        stocks.append(analyze_with_fallback(entry, sec, market_fetch, settings, now_iso, previous.get(entry["symbol"])))
 
     write_json(data_dir / "results.json", {
         "generated_at": now_iso, "settings": settings,
