@@ -1,0 +1,487 @@
+{
+  "symbol": "KKR",
+  "name": "KKR & CO. INC.",
+  "as_of": "2026-10-10T12:12:47Z",
+  "stale": false,
+  "stale_reason": null,
+  "error": null,
+  "notes": "",
+  "growth_override": null,
+  "price": 90.94999694824219,
+  "tier": "not_yet",
+  "tier_reason": "Not yet: a MOS price couldn't be calculated (see the warnings).",
+  "big_five": {
+    "score": 0,
+    "metrics": {
+      "roic": {
+        "label": "ROIC",
+        "windows": {
+          "10": {
+            "available": true,
+            "value": null,
+            "start_year": 2016,
+            "end_year": 2025,
+            "note": "no ROIC data",
+            "pass": false
+          },
+          "5": {
+            "available": true,
+            "value": null,
+            "start_year": 2021,
+            "end_year": 2025,
+            "note": "no ROIC data",
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": null,
+            "start_year": 2023,
+            "end_year": 2025,
+            "note": "no ROIC data",
+            "pass": false
+          },
+          "1": {
+            "available": true,
+            "value": null,
+            "start_year": 2025,
+            "end_year": 2025,
+            "note": "no ROIC data",
+            "pass": false
+          }
+        },
+        "passes": 0,
+        "required": 3,
+        "trend_ok": true,
+        "pass": false
+      },
+      "sales": {
+        "label": "Sales growth",
+        "windows": {
+          "10": {
+            "available": true,
+            "value": 0.37541817425039037,
+            "start_year": 2016,
+            "end_year": 2025,
+            "note": "start moved from 2015 to 2016 (missing or negative value)",
+            "pass": true
+          },
+          "5": {
+            "available": true,
+            "value": 0.5752422812936664,
+            "start_year": 2020,
+            "end_year": 2025,
+            "note": null,
+            "pass": true
+          },
+          "3": {
+            "available": true,
+            "value": 0.5055039804620185,
+            "start_year": 2022,
+            "end_year": 2025,
+            "note": null,
+            "pass": true
+          },
+          "1": {
+            "available": true,
+            "value": -0.11035350458240245,
+            "start_year": 2024,
+            "end_year": 2025,
+            "note": null,
+            "pass": false
+          }
+        },
+        "passes": 3,
+        "required": 3,
+        "trend_ok": false,
+        "pass": false
+      },
+      "eps": {
+        "label": "EPS growth",
+        "windows": {
+          "10": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "5": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "1": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          }
+        },
+        "passes": 0,
+        "required": 3,
+        "trend_ok": true,
+        "pass": false
+      },
+      "equity": {
+        "label": "Equity growth",
+        "windows": {
+          "10": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "5": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "1": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          }
+        },
+        "passes": 0,
+        "required": 3,
+        "trend_ok": true,
+        "pass": false
+      },
+      "fcf": {
+        "label": "Free cash flow growth",
+        "windows": {
+          "10": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "5": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          },
+          "1": {
+            "available": true,
+            "value": null,
+            "start_year": null,
+            "end_year": 2025,
+            "note": "2025 value is missing or not positive",
+            "pass": false
+          }
+        },
+        "passes": 0,
+        "required": 3,
+        "trend_ok": true,
+        "pass": false
+      }
+    },
+    "debt": {
+      "year": 2025,
+      "total_debt": null,
+      "fcf": null,
+      "payoff_years": null,
+      "pass": false
+    }
+  },
+  "valuation": {
+    "computable": false,
+    "growth_rate": null,
+    "growth_source": null,
+    "equity_growth": null,
+    "analyst_growth": null,
+    "price": 90.94999694824219,
+    "current_eps": null,
+    "eps_year": 2025,
+    "historical_pe_avg": null,
+    "historical_pe_years": 0,
+    "pe_from_growth": null,
+    "future_eps": null,
+    "future_pe": null,
+    "future_price": null,
+    "sticker_price": null,
+    "mos_price": null,
+    "pct_from_mos": null,
+    "owner_earnings_ps": null,
+    "ten_cap_price": null,
+    "fcf_ps": null,
+    "payback_price": null
+  },
+  "history": {
+    "years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "fy_end": {
+      "2009": "2009-12-31",
+      "2010": "2010-12-31",
+      "2011": "2011-12-31",
+      "2012": "2012-12-31",
+      "2013": "2013-12-31",
+      "2014": "2014-12-31",
+      "2015": "2015-12-31",
+      "2016": "2016-12-31",
+      "2017": "2017-12-31",
+      "2018": "2018-12-31",
+      "2019": "2019-12-31",
+      "2020": "2020-12-31",
+      "2021": "2021-12-31",
+      "2022": "2022-12-31",
+      "2023": "2023-12-31",
+      "2024": "2024-12-31",
+      "2025": "2025-12-31"
+    },
+    "revenue": {
+      "2016": 1104908000.0,
+      "2017": 1541604000.0,
+      "2018": 1841326000.0,
+      "2019": 1790475000.0,
+      "2020": 2006791000.0,
+      "2021": 16226040000.0,
+      "2022": 5704180000.0,
+      "2023": 14499312000.0,
+      "2024": 21878698000.0,
+      "2025": 19464307000.0
+    },
+    "operating_income": {},
+    "pretax_income": {
+      "2019": 5168290000.0,
+      "2020": 5726695000.0,
+      "2021": 13846599000.0,
+      "2022": -292221000.0,
+      "2023": 6554609000.0,
+      "2024": 5860433000.0,
+      "2025": 7099160000.0,
+      "2009": 6889369000.0,
+      "2010": 7851831000.0,
+      "2011": 965731000.0,
+      "2012": 8071649000.0,
+      "2013": 7892154000.0,
+      "2014": 5458689000.0,
+      "2015": 5341668000.0,
+      "2016": 975225000.0,
+      "2017": 2784368000.0,
+      "2018": 2256848000.0
+    },
+    "income_tax": {
+      "2009": 36998000.0,
+      "2010": 75360000.0,
+      "2011": 89245000.0,
+      "2012": 43405000.0,
+      "2013": 37926000.0,
+      "2014": 63669000.0,
+      "2015": 66636000.0,
+      "2016": 24561000.0,
+      "2017": 224326000.0,
+      "2018": -194098000.0,
+      "2019": 528750000.0,
+      "2020": 609097000.0,
+      "2021": 1394882000.0,
+      "2022": 125393000.0,
+      "2023": 1197523000.0,
+      "2024": 954396000.0,
+      "2025": 953748000.0
+    },
+    "net_income": {
+      "2009": 849685000.0,
+      "2010": 333178000.0,
+      "2011": 1921000.0,
+      "2012": 560836000.0,
+      "2013": 691226000.0,
+      "2014": 477611000.0,
+      "2015": 488482000.0,
+      "2016": 309307000.0,
+      "2017": 1018305000.0,
+      "2018": 1131063000.0,
+      "2019": 2005049000.0,
+      "2020": 2002509000.0,
+      "2021": 4732406000.0,
+      "2022": -521664000.0,
+      "2023": 3732261000.0,
+      "2024": 3076245000.0,
+      "2025": 2370463000.0
+    },
+    "eps_diluted": {},
+    "shares_diluted": {},
+    "equity": {
+      "2017": 7185936000.0,
+      "2018": 8649610000.0,
+      "2019": 10807490000.0,
+      "2020": 13716818000.0,
+      "2021": 17582164000.0,
+      "2022": 18807767000.0,
+      "2023": 22858694000.0,
+      "2024": 23651568000.0,
+      "2025": 30902561000.0
+    },
+    "bvps": {},
+    "total_debt": {
+      "2009": 0.0,
+      "2010": 0.0,
+      "2011": 1566500.0,
+      "2012": 1125026000.0,
+      "2013": 1915556000.0,
+      "2014": 11010700000.0,
+      "2015": 18813806000.0,
+      "2016": 18662965000.0,
+      "2017": 21434682000.0,
+      "2018": 22639000000.0,
+      "2019": 27151710000.0,
+      "2020": 33501204000.0,
+      "2021": 36914472000.0,
+      "2022": 0.0,
+      "2023": 0.0,
+      "2024": 0.0,
+      "2025": null
+    },
+    "operating_cash_flow": {
+      "2009": -347312000.0,
+      "2010": 733396000.0,
+      "2011": -208577000.0,
+      "2013": 2577753000.0,
+      "2014": 1488650000.0,
+      "2015": 385404000.0,
+      "2016": -1441220000.0,
+      "2017": -3532166000.0,
+      "2018": -7606475000.0,
+      "2019": -5682155000.0,
+      "2020": -5953693000.0,
+      "2021": -7176708000.0,
+      "2022": -5279259000.0,
+      "2023": -1493812000.0,
+      "2024": 6649878000.0,
+      "2025": 477760000.0,
+      "2012": 6201751000.0
+    },
+    "capex": {
+      "2009": 21050000.0,
+      "2010": 13081000.0,
+      "2011": 18214000.0,
+      "2012": 36966000.0,
+      "2013": 14396000.0,
+      "2014": 12163000.0,
+      "2015": 169419000.0,
+      "2016": 62663000.0,
+      "2017": 97070000.0,
+      "2018": 102664000.0,
+      "2019": 194569000.0
+    },
+    "fcf": {
+      "2009": -368362000.0,
+      "2010": 720315000.0,
+      "2011": -226791000.0,
+      "2012": 6164785000.0,
+      "2013": 2563357000.0,
+      "2014": 1476487000.0,
+      "2015": 215985000.0,
+      "2016": -1503883000.0,
+      "2017": -3629236000.0,
+      "2018": -7709139000.0,
+      "2019": -5876724000.0
+    },
+    "dep_amort": {
+      "2009": 9799000.0,
+      "2010": 11664000.0,
+      "2011": 10073000.0,
+      "2012": 12573000.0,
+      "2013": 14714000.0,
+      "2014": 15923000.0,
+      "2015": 15418000.0,
+      "2016": 16045000.0,
+      "2017": 15300000.0,
+      "2018": 15000000.0,
+      "2019": 17700000.0,
+      "2020": 18600000.0,
+      "2021": 386867000.0,
+      "2022": 364162000.0,
+      "2023": 68302000.0,
+      "2024": -119315000.0,
+      "2025": -162529000.0
+    },
+    "change_ar": {},
+    "change_ap": {},
+    "roic": {},
+    "pe": {}
+  },
+  "warnings": [
+    "No long-term debt figure found for 2025 although earlier years had debt; 2025 debt is treated as unknown and the debt check fails.",
+    "ROIC 10-year: no ROIC data.",
+    "ROIC 5-year: no ROIC data.",
+    "ROIC 3-year: no ROIC data.",
+    "ROIC 1-year: no ROIC data.",
+    "Sales growth 10-year: start moved from 2015 to 2016 (missing or negative value).",
+    "EPS growth 10-year: 2025 value is missing or not positive.",
+    "EPS growth 5-year: 2025 value is missing or not positive.",
+    "EPS growth 3-year: 2025 value is missing or not positive.",
+    "EPS growth 1-year: 2025 value is missing or not positive.",
+    "Equity growth 10-year: 2025 value is missing or not positive.",
+    "Equity growth 5-year: 2025 value is missing or not positive.",
+    "Equity growth 3-year: 2025 value is missing or not positive.",
+    "Equity growth 1-year: 2025 value is missing or not positive.",
+    "Free cash flow growth 10-year: 2025 value is missing or not positive.",
+    "Free cash flow growth 5-year: 2025 value is missing or not positive.",
+    "Free cash flow growth 3-year: 2025 value is missing or not positive.",
+    "Free cash flow growth 1-year: 2025 value is missing or not positive.",
+    "No analyst 5-year growth estimate available; using historical equity growth only.",
+    "No growth rate could be determined.",
+    "Latest EPS is missing, zero or negative, so a Sticker Price can't be calculated."
+  ]
+}

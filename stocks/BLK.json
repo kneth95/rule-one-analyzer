@@ -1,0 +1,379 @@
+{
+  "symbol": "BLK",
+  "name": "BlackRock, Inc.",
+  "as_of": "2026-10-10T12:12:47Z",
+  "stale": false,
+  "stale_reason": null,
+  "error": null,
+  "notes": "",
+  "growth_override": null,
+  "price": 1082.3900146484375,
+  "tier": "not_yet",
+  "tier_reason": "Not yet: only 2 of 5 Big Five numbers pass (needs 4).",
+  "big_five": {
+    "score": 2,
+    "metrics": {
+      "roic": {
+        "label": "ROIC",
+        "windows": {
+          "10": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "5": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": 0.09492074939086813,
+            "start_year": 2023,
+            "end_year": 2025,
+            "note": null,
+            "pass": false
+          },
+          "1": {
+            "available": true,
+            "value": 0.08002711747168649,
+            "start_year": 2025,
+            "end_year": 2025,
+            "note": null,
+            "pass": false
+          }
+        },
+        "passes": 0,
+        "required": 2,
+        "trend_ok": true,
+        "pass": false
+      },
+      "sales": {
+        "label": "Sales growth",
+        "windows": {
+          "10": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "5": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": 0.1065430569599104,
+            "start_year": 2022,
+            "end_year": 2025,
+            "note": null,
+            "pass": true
+          },
+          "1": {
+            "available": true,
+            "value": 0.1866516391434312,
+            "start_year": 2024,
+            "end_year": 2025,
+            "note": null,
+            "pass": true
+          }
+        },
+        "passes": 2,
+        "required": 2,
+        "trend_ok": true,
+        "pass": true
+      },
+      "eps": {
+        "label": "EPS growth",
+        "windows": {
+          "10": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "5": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": 0.012979656452193788,
+            "start_year": 2022,
+            "end_year": 2025,
+            "note": null,
+            "pass": false
+          },
+          "1": {
+            "available": true,
+            "value": -0.15948583670554617,
+            "start_year": 2024,
+            "end_year": 2025,
+            "note": null,
+            "pass": false
+          }
+        },
+        "passes": 0,
+        "required": 2,
+        "trend_ok": false,
+        "pass": false
+      },
+      "equity": {
+        "label": "Equity growth",
+        "windows": {
+          "10": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "5": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": 0.11822627049522039,
+            "start_year": 2022,
+            "end_year": 2025,
+            "note": null,
+            "pass": true
+          },
+          "1": {
+            "available": true,
+            "value": 0.1090405367740932,
+            "start_year": 2024,
+            "end_year": 2025,
+            "note": null,
+            "pass": true
+          }
+        },
+        "passes": 2,
+        "required": 2,
+        "trend_ok": true,
+        "pass": true
+      },
+      "fcf": {
+        "label": "Free cash flow growth",
+        "windows": {
+          "10": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "5": {
+            "available": false,
+            "value": null,
+            "start_year": null,
+            "end_year": null,
+            "note": null,
+            "pass": false
+          },
+          "3": {
+            "available": true,
+            "value": -0.07049441006139112,
+            "start_year": 2022,
+            "end_year": 2025,
+            "note": null,
+            "pass": false
+          },
+          "1": {
+            "available": true,
+            "value": -0.24441608168474793,
+            "start_year": 2024,
+            "end_year": 2025,
+            "note": null,
+            "pass": false
+          }
+        },
+        "passes": 0,
+        "required": 2,
+        "trend_ok": false,
+        "pass": false
+      }
+    },
+    "debt": {
+      "year": 2025,
+      "total_debt": 12768000000.0,
+      "fcf": 3552000000.0,
+      "payoff_years": 3.5945945945945947,
+      "pass": false
+    }
+  },
+  "valuation": {
+    "computable": true,
+    "growth_rate": 0.11822627049522039,
+    "growth_source": "historical equity growth",
+    "equity_growth": 0.11822627049522039,
+    "analyst_growth": null,
+    "price": 1082.3900146484375,
+    "current_eps": 35.31,
+    "eps_year": 2025,
+    "historical_pe_avg": 24.452424518820003,
+    "historical_pe_years": 4,
+    "pe_from_growth": 23.645254099044077,
+    "future_eps": 107.94303549490395,
+    "future_pe": 23.645254099044077,
+    "future_price": 2552.340502499138,
+    "sticker_price": 630.8995370331849,
+    "mos_price": 315.4497685165924,
+    "pct_from_mos": 2.4312594989002334,
+    "owner_earnings_ps": 42.24309668510827,
+    "ten_cap_price": 422.4309668510827,
+    "fcf_ps": 22.080417839085364,
+    "payback_price": 301.73166628702694
+  },
+  "history": {
+    "years": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "fy_end": {
+      "2022": "2022-12-31",
+      "2023": "2023-12-31",
+      "2024": "2024-12-31",
+      "2025": "2025-12-31"
+    },
+    "revenue": {
+      "2022": 17873000000.0,
+      "2023": 17859000000.0,
+      "2024": 20407000000.0,
+      "2025": 24216000000.0
+    },
+    "operating_income": {
+      "2022": 6385000000.0,
+      "2023": 6275000000.0,
+      "2024": 7574000000.0,
+      "2025": 7045000000.0
+    },
+    "pretax_income": {
+      "2022": 6290000000.0,
+      "2023": 7155000000.0,
+      "2024": 8295000000.0,
+      "2025": 7619000000.0
+    },
+    "income_tax": {
+      "2022": 1296000000.0,
+      "2023": 1479000000.0,
+      "2024": 1783000000.0,
+      "2025": 1677000000.0
+    },
+    "net_income": {
+      "2022": 5178000000.0,
+      "2023": 5502000000.0,
+      "2024": 6369000000.0,
+      "2025": 5553000000.0
+    },
+    "eps_diluted": {
+      "2022": 33.97,
+      "2023": 36.51,
+      "2024": 42.01,
+      "2025": 35.31
+    },
+    "shares_diluted": {
+      "2022": 152440471.0,
+      "2023": 150706451.0,
+      "2024": 151615085.0,
+      "2025": 160866521.0
+    },
+    "equity": {
+      "2023": 39347000000.0,
+      "2024": 47495000000.0,
+      "2025": 55888000000.0,
+      "2022": 37876000000.0
+    },
+    "bvps": {
+      "2022": 248.46420213435314,
+      "2023": 261.0837143262036,
+      "2024": 313.26038566676925,
+      "2025": 347.4184662699332
+    },
+    "total_debt": {
+      "2022": 0.0,
+      "2023": 7918000000.0,
+      "2024": 12314000000.0,
+      "2025": 12768000000.0
+    },
+    "operating_cash_flow": {
+      "2022": 4956000000.0,
+      "2023": 4165000000.0,
+      "2024": 4956000000.0,
+      "2025": 3927000000.0
+    },
+    "capex": {
+      "2022": 533000000.0,
+      "2023": 344000000.0,
+      "2024": 255000000.0,
+      "2025": 375000000.0
+    },
+    "fcf": {
+      "2022": 4423000000.0,
+      "2023": 3821000000.0,
+      "2024": 4701000000.0,
+      "2025": 3552000000.0
+    },
+    "dep_amort": {
+      "2022": 251000000.0,
+      "2023": 263000000.0,
+      "2024": 270000000.0,
+      "2025": 297000000.0
+    },
+    "change_ar": {
+      "2022": -416000000.0,
+      "2023": 586000000.0,
+      "2024": 443000000.0,
+      "2025": 619000000.0
+    },
+    "change_ap": {
+      "2022": -151000000.0,
+      "2023": -26000000.0,
+      "2024": 259000000.0,
+      "2025": 75000000.0
+    },
+    "roic": {
+      "2022": 0.13384269915334132,
+      "2023": 0.10531902176962445,
+      "2024": 0.09941610893129345,
+      "2025": 0.08002711747168649
+    },
+    "pe": {
+      "2022": 20.86046526001803,
+      "2023": 22.235003774115825,
+      "2024": 24.40157070582153,
+      "2025": 30.312658335324624
+    }
+  },
+  "warnings": [
+    "Only 4 years of annual data available; the 10-year checks use what exists.",
+    "No analyst 5-year growth estimate available; using historical equity growth only."
+  ]
+}
