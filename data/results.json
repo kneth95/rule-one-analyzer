@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T03:58:30Z",
+  "generated_at": "2026-11-27T03:57:21Z",
   "settings": {
     "marr": 0.15,
     "mos_fraction": 0.5,
@@ -91,7 +91,7 @@
     {
       "symbol": "AAPL",
       "name": "Apple Inc.",
-      "as_of": "2026-11-26T03:58:30Z",
+      "as_of": "2026-11-27T03:57:21Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -789,7 +789,7 @@
     {
       "symbol": "NVDA",
       "name": "NVIDIA CORP",
-      "as_of": "2026-11-26T03:58:30Z",
+      "as_of": "2026-11-27T03:57:21Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -1445,7 +1445,7 @@
     {
       "symbol": "GOOGL",
       "name": "Alphabet Inc.",
-      "as_of": "2026-11-26T03:58:30Z",
+      "as_of": "2026-11-27T03:57:21Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -1978,7 +1978,7 @@
     {
       "symbol": "GOOG",
       "name": "Alphabet Inc.",
-      "as_of": "2026-11-26T03:58:30Z",
+      "as_of": "2026-11-27T03:57:21Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -2511,7 +2511,7 @@
     {
       "symbol": "ROL",
       "name": "ROLLINS, INC.",
-      "as_of": "2026-11-26T03:58:30Z",
+      "as_of": "2026-11-27T03:57:21Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -3056,7 +3056,7 @@
     {
       "symbol": "RMD",
       "name": "ResMed Inc.",
-      "as_of": "2026-11-26T03:58:30Z",
+      "as_of": "2026-11-27T03:57:21Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
@@ -3711,7 +3711,7 @@
     {
       "symbol": "MU",
       "name": "Micron Technology, Inc.",
-      "as_of": "2026-11-26T03:58:30Z",
+      "as_of": "2026-11-27T03:57:21Z",
       "stale": false,
       "stale_reason": null,
       "error": null,
